@@ -106,13 +106,13 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 
 · Website: frex.com
 · Email: research@frex.org
-· Twitter: @FREX_Research
+· X: @FREX_Research
 · LinkedIn: FREX Research
 
 🙏 Acknowledgments
 
 · Makerere University College of Computing & IS
 · Uganda National Council for Science and Technology
-· Open source community contributors
+
 
 ```
