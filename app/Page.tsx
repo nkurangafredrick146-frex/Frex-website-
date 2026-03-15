@@ -1,6 +1,7 @@
-'use client';
+ 'use client';
 
 import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';   // ✅ Added import
 import Button from '@/components/Button';
 import Link from 'next/link';
 
@@ -87,7 +88,12 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 relative">
-        <div className="text-center max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}   // ✅ Added animation
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-4xl mx-auto"
+        >
           <img src="/frex-logo.svg" alt="Frex Logo" className="mx-auto mb-6 w-24 h-24" />
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Building the Foundational Layer for Tomorrow
@@ -99,7 +105,7 @@ export default function Home() {
             <Button variant="primary" size="lg" href="/labs">Explore Frex Labs</Button>
             <Button variant="outline" size="lg" href="/solutions">Partner with Frex Solutions</Button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Research Divisions Preview */}
@@ -108,12 +114,18 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Research Divisions</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {researchDivisions.map((div, idx) => (
-              <div key={idx} className="bg-gray-900/50 p-8 rounded-lg border border-cyan-500/20 hover:border-cyan-500 transition text-center">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                className="bg-gray-900/50 p-8 rounded-lg border border-cyan-500/20 hover:border-cyan-500 transition text-center"
+              >
                 <div className="text-5xl mb-4">{div.icon}</div>
                 <h3 className="text-2xl font-bold mb-2">{div.title}</h3>
                 <p className="text-gray-400 mb-4">{div.description}</p>
                 <Button variant="outline" size="sm" href={div.link}>Learn more →</Button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -125,12 +137,18 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Applied Solutions</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {solutions.map((sol, idx) => (
-              <div key={idx} className="bg-black/50 p-8 rounded-lg border border-cyan-500/20 hover:border-cyan-500 transition text-center">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                className="bg-black/50 p-8 rounded-lg border border-cyan-500/20 hover:border-cyan-500 transition text-center"
+              >
                 <div className="text-5xl mb-4">{sol.icon}</div>
                 <h3 className="text-2xl font-bold mb-2">{sol.name}</h3>
                 <p className="text-cyan-400 italic mb-4">{sol.tagline}</p>
                 <Button variant="outline" size="sm" href={sol.link}>Explore →</Button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -138,15 +156,21 @@ export default function Home() {
 
       {/* CTA */}
       <section className="py-20 px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to shape the future?</h2>
-        <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          Join us in building the foundational layer for tomorrow.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="primary" size="lg" href="/contact">Contact us</Button>
-          <Button variant="outline" size="lg" href="/about">About FREX</Button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to shape the future?</h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join us in building the foundational layer for tomorrow.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="primary" size="lg" href="/contact">Contact us</Button>
+            <Button variant="outline" size="lg" href="/about">About FREX</Button>
+          </div>
+        </motion.div>
       </section>
     </>
   );
-      }
+}
