@@ -1,6 +1,10 @@
- import Link from 'next/link';
+ 'use client';
+
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +13,16 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  // Locale switcher setup
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const switchLocale = (newLocale: string) => {
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
+  };
 
   return (
     <nav className="bg-black text-white border-b border-cyan-500/20 sticky top-0 z-50">
@@ -43,6 +57,16 @@ export default function Navbar() {
                 {theme === 'dark' ? '☀️' : '🌙'}
               </button>
             )}
+
+            {/* Locale switcher */}
+            <select
+              onChange={(e) => switchLocale(e.target.value)}
+              value={locale}
+              className="bg-gray-800 text-cyan-400 p-2 rounded-lg"
+            >
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+            </select>
           </div>
 
           {/* Mobile menu button */}
@@ -98,6 +122,16 @@ export default function Navbar() {
                   {theme === 'dark' ? '☀️' : '🌙'}
                 </button>
               )}
+
+              {/* Locale switcher for mobile */}
+              <select
+                onChange={(e) => switchLocale(e.target.value)}
+                value={locale}
+                className="bg-gray-800 text-cyan-400 p-2 rounded-lg"
+              >
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+              </select>
             </div>
           </div>
         )}
@@ -133,4 +167,4 @@ function MobileNavLink({
       {children}
     </Link>
   );
-}
+               }
