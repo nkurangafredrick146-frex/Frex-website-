@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import BackToTop from '@/components/BackToTop';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -27,6 +28,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           {/* Global cookie consent banner */}
           <CookieConsent />
+          {/* Back to top button */}
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>
