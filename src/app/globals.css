@@ -1,13 +1,20 @@
-/* Tailwind setup */
+ /* Tailwind setup */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Root color variables */
+/* Default (dark mode) variables */
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+}
+
+/* Light mode overrides */
+:root.light {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
 }
 
 /* Body background */
@@ -21,7 +28,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-/* Frex animated background */
+/* FREX animated background */
 .frex-animation {
   background: 
     radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
@@ -45,4 +52,4 @@ body {
     transform: scale(1);
     opacity: 0.5;
   }
-    }
+}
