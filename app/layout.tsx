@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Global Google Analytics script */}
+        <GoogleAnalytics />
+      </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar />
