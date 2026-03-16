@@ -1,8 +1,14 @@
-import Link from 'next/link';
-import { useState } from 'react';
+ import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Theme toggle setup
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <nav className="bg-black text-white border-b border-cyan-500/20 sticky top-0 z-50">
@@ -27,6 +33,16 @@ export default function Navbar() {
             >
               Contact
             </a>
+
+            {/* Theme toggle button */}
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="p-2 rounded-lg bg-gray-800 text-cyan-400"
+              >
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -72,6 +88,16 @@ export default function Navbar() {
               >
                 Contact
               </a>
+
+              {/* Theme toggle for mobile */}
+              {mounted && (
+                <button
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="p-2 rounded-lg bg-gray-800 text-cyan-400"
+                >
+                  {theme === 'dark' ? '☀️' : '🌙'}
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -89,7 +115,15 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   );
 }
 
-function MobileNavLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
+function MobileNavLink({
+  href,
+  onClick,
+  children,
+}: {
+  href: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <Link
       href={href}
@@ -99,4 +133,4 @@ function MobileNavLink({ href, onClick, children }: { href: string; onClick: () 
       {children}
     </Link>
   );
-        }
+}
