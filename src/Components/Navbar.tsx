@@ -41,6 +41,7 @@ export default function Navbar() {
             <NavLink href="/labs">Labs</NavLink>
             <NavLink href="/solutions">Solutions</NavLink>
             <NavLink href="/doctry">Doctry</NavLink>
+            <NavLink href="/x-systems">X‑Systems</NavLink> {/* ✅ New link */}
             <a
               href="#contact"
               className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded-lg transition-colors"
@@ -105,6 +106,9 @@ export default function Navbar() {
               <MobileNavLink href="/doctry" onClick={() => setIsOpen(false)}>
                 Doctry
               </MobileNavLink>
+              <MobileNavLink href="/x-systems" onClick={() => setIsOpen(false)}>
+                X‑Systems
+              </MobileNavLink> {/* ✅ New link */}
               <a
                 href="#contact"
                 className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded-lg text-center transition-colors"
@@ -167,4 +171,4 @@ function MobileNavLink({
       {children}
     </Link>
   );
-               }
+      }
