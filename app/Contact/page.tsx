@@ -1,7 +1,8 @@
-'use client';
+ 'use client';
 
 import { useState } from 'react';
 import Button from '@/components/Button';
+import XFeed from '@/components/XFeed';   // ✅ Import the feed
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -110,6 +111,11 @@ export default function ContactPage() {
           <p>Email: <a href="mailto:research@frex.org" className="text-cyan-400 hover:underline">research@frex.org</a></p>
           <p>X: <a href="#" className="text-cyan-400 hover:underline">@FREX_Research</a></p>
           <p>LinkedIn: <a href="#" className="text-cyan-400 hover:underline">FREX Research</a></p>
+        </div>
+
+        {/* ✅ Embed XFeed below contact info */}
+        <div className="mt-16">
+          <XFeed />
         </div>
       </div>
     </div>
