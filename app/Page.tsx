@@ -1,9 +1,10 @@
  'use client';
 
 import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';   // ✅ Added import
+import { motion } from 'framer-motion';
 import Button from '@/components/Button';
 import Link from 'next/link';
+import XFeed from '@/components/XFeed';
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -89,7 +90,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}   // ✅ Added animation
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto"
@@ -171,6 +172,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-    </>
-  );
-}
+
+      {/* ✅ Embed XFeed at the bottom of homepage */}
+      <section className="py-20 px-4 bg-black/90">
