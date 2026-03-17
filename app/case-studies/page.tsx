@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+ import Button from '@/components/Button';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -28,6 +28,14 @@ const cases = [
     summary: 'Deployed edge AI sensors that reduced downtime by 30%.',
     image: '/case-studies/minecorp.jpg',
   },
+  // ✅ New FREX SOS Case Study
+  {
+    title: 'FREX SOS: Systems of Systems',
+    client: 'FREX Internal',
+    industry: 'Cross-Domain Research',
+    summary: 'Building a modular discovery engine that integrates quantum, doctrinal, and emergent sciences into one unified platform.',
+    image: '/case-studies/frex-sos.jpg',
+  },
 ];
 
 export default function CaseStudiesPage() {
@@ -52,7 +60,11 @@ export default function CaseStudiesPage() {
                 <h2 className="text-2xl font-bold mb-2">{cs.title}</h2>
                 <p className="text-gray-400 mb-1">Client: {cs.client}</p>
                 <p className="text-gray-300 mb-4">{cs.summary}</p>
-                <Button variant="outline" size="sm" href={`/case-studies/${cs.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  href={`/case-studies/${cs.title.toLowerCase().replace(/\s+/g, '-')}`}
+                >
                   Read Full Study
                 </Button>
               </div>
@@ -62,4 +74,4 @@ export default function CaseStudiesPage() {
       </div>
     </div>
   );
-}
+      }
