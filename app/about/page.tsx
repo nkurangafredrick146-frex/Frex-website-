@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+ import Button from '@/components/Button';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,10 +14,14 @@ export default function AboutPage() {
           About FREX
         </h1>
 
+        {/* ✅ Updated Mission & Philosophy Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Mission</h2>
+          <h2 className="text-2xl font-bold mb-4">Mission & Philosophy</h2>
+          <p className="text-gray-300 leading-relaxed mb-4">
+            FREX (Fundamental Research & Evolutionary X‑Systems) is a research organization that investigates fundamental questions across all domains – from quantum physics to sociology – and evolves systems that were previously unknown. The “X” represents the limitless possibilities of discovery.
+          </p>
           <p className="text-gray-300 leading-relaxed">
-            FREX (Fundamental Research & Evolutionary X-Systems) is a research organization pioneering fundamental research in quantum computing, doctrinal frameworks, and emergent technologies to develop evolutionary systems that adapt and improve over time.
+            We believe that breakthroughs emerge when we combine deep fundamental research with an evolutionary approach: systems that adapt, improve, and sometimes surprise us. Whether it's a new material like graphene, a novel governance model, or a life‑saving medical device, our goal is to create the foundational layer for tomorrow.
           </p>
         </section>
 
