@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import PlausibleAnalytics from '@/components/PlausibleAnalytics';   // ✅ Added import
 import BackToTop from '@/components/BackToTop';
 import './globals.css';
 
@@ -20,6 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Global Google Analytics script */}
         <GoogleAnalytics />
+        {/* ✅ Global Plausible Analytics script */}
+        <PlausibleAnalytics />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
