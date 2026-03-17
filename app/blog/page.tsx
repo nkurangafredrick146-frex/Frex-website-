@@ -1,41 +1,34 @@
+ import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Blog | FREX Research',
-  description: 'Latest updates, research insights, and news from FREX.',
 };
 
-// Sample blog posts – replace with CMS or markdown
-const posts = [
-  {
-    slug: 'quantum-advantage-demonstration',
-    title: 'Quantum Advantage Demonstrated in Logistics Optimization',
-    excerpt: 'Our quantum team achieved a 100x speedup for a real-world supply chain problem.',
-    date: '2025-02-15',
-    author: 'Dr. Ada Nambi',
-    category: 'Quantum',
-  },
-  {
-    slug: 'ai-governance-framework-v2',
-    title: 'Introducing the Doctrinal Compiler v2.0',
-    excerpt: 'A major update to our AI governance tool, now with formal verification.',
-    date: '2025-01-22',
-    author: 'Prof. John Mukasa',
-    category: 'Doctrinal',
-  },
-  {
-    slug: 'neuromorphic-breakthrough',
-    title: 'Neuromorphic Chip Prototype Achieves Record Efficiency',
-    excerpt: 'Our emergent sciences division unveils a new architecture for edge AI.',
-    date: '2024-12-10',
-    author: 'Dr. Grace Akello',
-    category: 'Emergent',
-  },
-];
+export default async function BlogPage() {
+  const postsDirectory = path.join(process.cwd(), 'content/blog');
+  const filenames = fs.readdirSync(postsDirectory);
+  const posts = filenames
+    .filter((fn) => fn.endsWith('.mdx'))
+    .map((fn) => {
+      const filePath = path.join(postsDirectory, fn);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data } = matter(fileContents);
+      return {
+        slug: fn.replace(/\.mdx$/, ''),
+        title: data.title,
+        excerpt: data.excerpt,
+        date: data.date,
+        author: data.author,
+        category: data.category,
+      };
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-export default function BlogPage() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
       <div className="container mx-auto max-w-5xl">
@@ -64,11 +57,6 @@ export default function BlogPage() {
               </div>
             </article>
           ))}
-        </div>
-        <div className="mt-12 text-center">
-          <Button variant="outline" size="lg" href="/blog/archive">
-            View All Posts
-          </Button>
         </div>
       </div>
     </div>
