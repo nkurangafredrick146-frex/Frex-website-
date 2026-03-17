@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Button from '@/components/Button';
+import QuantumDemo from '@/components/QuantumDemo';   // ✅ Import the demo
 
 export default function LabsPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -136,6 +137,13 @@ export default function LabsPage() {
           </div>
         </div>
       </section>
+
+      {/* ✅ Quantum Demo Embed */}
+      <section className="py-16 px-4 bg-gray-900/30">
+        <div className="container mx-auto max-w-3xl">
+          <QuantumDemo />
+        </div>
+      </section>
     </div>
   );
-      }
+}
