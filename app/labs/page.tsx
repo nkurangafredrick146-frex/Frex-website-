@@ -109,6 +109,31 @@ export default function LabsPage() {
         </div>
       </section>
 
+      {/* ✅ Cross‑Domain Research Section */}
+      <section className="py-16 px-4 bg-gray-900/20">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Exploring All Frontiers</h2>
+          <p className="text-lg text-gray-300 mb-8 text-center max-w-3xl mx-auto">
+            Our labs aren't limited to computing. We investigate fundamental questions across the sciences and humanities.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { title: 'Graphene & 2D Materials', desc: 'Synthesizing new materials for water purification and energy storage.' },
+              { title: 'Synthetic Biology', desc: 'Engineering organisms to produce sustainable fuels.' },
+              { title: 'Social Network Dynamics', desc: 'Modeling information spread to build resilient communities.' },
+              { title: 'Quantum Biology', desc: 'Exploring quantum effects in photosynthesis.' },
+              { title: 'Neuro‑Symbolic AI', desc: 'Combining neural networks with logical reasoning.' },
+              { title: 'Metamaterials', desc: 'Designing materials with negative refractive index.' },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-800/30 p-6 rounded-lg border border-cyan-500/10">
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-400">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Projects (Interactive Tabs) */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
