@@ -132,6 +132,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ✅ X‑Systems Philosophy Section */}
+      <section className="py-20 px-4 bg-gray-900/30">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">The “X” Means Unknown</h2>
+          <p className="text-xl text-gray-300 mb-8">
+            At FREX, we explore fundamental questions in <span className="text-cyan-400">any domain</span> – from graphene to social networks – and evolve systems that were never known before. Our research spans materials, biology, energy, and beyond.
+          </p>
+          <Button variant="outline" size="lg" href="/x-systems">
+            Discover X‑Systems →
+          </Button>
+        </div>
+      </section>
+
       {/* Solutions Teaser */}
       <section className="py-20 px-4 bg-gray-900/50">
         <div className="container mx-auto">
@@ -164,14 +177,4 @@ export default function Home() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to shape the future?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join us in building the foundational layer for tomorrow.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg" href="/contact">Contact us</Button>
-            <Button variant="outline" size="lg" href="/about">About FREX</Button>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ✅ Embed XFeed at the bottom of homepage */}
-      <section className="py-20 px-4 bg-black/90">
+            Join us in building the
