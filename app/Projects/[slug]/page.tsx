@@ -2,6 +2,14 @@ import { allProjects } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import Button from '@/components/Button'
+import { Metadata } from 'next'
+import Image from 'next/image'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const project = allProjects.find((p) => p.slug === params.slug)
+  if (!project) return { title: 'Project Not Found' }
+  return { title: `${project.title} | FREX Projects` }
+}
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = allProjects.find((p) => p.slug === params.slug)
@@ -23,38 +31,38 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </ol>
         </nav>
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        <Button variant="outline" size="sm" href="/projects">← All Projects</Button>
+
+        <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-2 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
           {project.title}
         </h1>
-        <p className="text-xl text-gray-300 mb-8">
-          Lead: {project.lead} | Domain: {project.domain}
-        </p>
+        <p className="text-cyan-400 mb-1">{project.domain}</p>
+        <p className="text-gray-400 mb-4">Lead: {project.lead} | {project.timeline}</p>
 
+        {project.image && (
+          <div className="relative h-80 w-full mb-6">
+            <Image src={project.image} alt={project.title} fill className="object-cover rounded-lg" />
+          </div>
+        )}
+
+        {/* MDX body content */}
         <div className="prose prose-invert max-w-none mb-8">
           <MDXContent />
         </div>
 
-        <p className="text-gray-400 mb-6">Timeline: {project.timeline}</p>
-
         {project.publications.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Publications</h2>
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold mb-4">Related Publications</h2>
             <ul className="list-disc list-inside text-gray-300">
               {project.publications.map((pub, i) => (
                 <li key={i}>
-                  <a href={pub.url} className="text-cyan-400 hover:underline">
-                    {pub.title}
-                  </a>
+                  <a href={pub.url} className="text-cyan-400 hover:underline">{pub.title}</a>
                 </li>
               ))}
             </ul>
           </div>
         )}
-
-        <Button variant="outline" href="/projects">
-          ← Back to Projects
-        </Button>
       </div>
     </div>
   )
-}
+            }
