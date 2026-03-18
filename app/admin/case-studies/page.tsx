@@ -56,9 +56,17 @@ export default async function AdminCaseStudies() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
       <div className="container mx-auto max-w-6xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          Manage Case Studies
-        </h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            Manage Case Studies
+          </h1>
+          {/* Logout button */}
+          <form action="/api/admin/logout" method="POST">
+            <Button type="submit" variant="outline" size="sm">
+              Logout
+            </Button>
+          </form>
+        </div>
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Drafts ({drafts.length})</h2>
@@ -110,4 +118,4 @@ export default async function AdminCaseStudies() {
       </div>
     </div>
   );
-}
+              }
