@@ -36,12 +36,13 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* ✅ Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <NavLink href="/labs">Labs</NavLink>
             <NavLink href="/solutions">Solutions</NavLink>
             <NavLink href="/doctry">Doctry</NavLink>
-            <NavLink href="/x-systems">X‑Systems</NavLink> {/* ✅ New link */}
+            <NavLink href="/x-systems">X‑Systems</NavLink>
+            <NavLink href="/search-map">Research Map</NavLink> {/* ✅ New link */}
             <a
               href="#contact"
               className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded-lg transition-colors"
@@ -93,7 +94,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* ✅ Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-3">
@@ -108,6 +109,9 @@ export default function Navbar() {
               </MobileNavLink>
               <MobileNavLink href="/x-systems" onClick={() => setIsOpen(false)}>
                 X‑Systems
+              </MobileNavLink>
+              <MobileNavLink href="/search-map" onClick={() => setIsOpen(false)}>
+                Research Map
               </MobileNavLink> {/* ✅ New link */}
               <a
                 href="#contact"
@@ -171,4 +175,4 @@ function MobileNavLink({
       {children}
     </Link>
   );
-              }
+         }
