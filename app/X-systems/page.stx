@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+ import { Metadata } from 'next';
 import Button from '@/components/Button';
 
 export const metadata: Metadata = {
@@ -46,11 +46,13 @@ export default function XSystemsPage() {
         <h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
           What are X‑Systems?
         </h1>
+
+        {/* Strengthened connection to fundamental research */}
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-          The <span className="text-cyan-400 font-bold">X</span> in FREX stands for the <span className="text-cyan-400 font-bold">unknown</span>. We don't limit ourselves to technology alone. We choose fundamental questions from <em>any</em> domain – materials, biology, society, energy – and through deep research, we evolve systems that were previously unimaginable.
+          The <span className="text-cyan-400 font-bold">X</span> in FREX stands for the <span className="text-cyan-400 font-bold">unknown</span>. We don't limit ourselves to technology alone. We choose fundamental questions from <em>any</em> domain – materials, biology, society, energy – and through deep, first‑principles research, we evolve systems that were previously unimaginable.
         </p>
         <p className="text-xl text-gray-300 mb-12">
-          These systems can be physical (a new material), conceptual (a governance model), or biological (a modified organism). The only constant is that they emerge from fundamental research and evolve to solve real‑world problems.
+          These systems can be physical (a new material), conceptual (a governance model), or biological (a modified organism). The only constant is that they emerge from fundamental research and evolve to solve real‑world problems. Our work starts at the foundation, and from there, new possibilities arise.
         </p>
 
         <h2 className="text-3xl font-bold mb-8 text-center">Examples Across Domains</h2>
