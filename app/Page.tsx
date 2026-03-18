@@ -109,6 +109,19 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* ✅ Fundamental Research Philosophy Section */}
+      <section className="py-20 px-4 bg-gray-900/30">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Fundamental Research – At the Foundation</h2>
+          <p className="text-xl text-gray-300 mb-6">
+            At FREX, "fundamental research" means we go back to <span className="text-cyan-400 font-semibold">first principles</span>. We don't start with applications; we start with curiosity‑driven inquiry into the deepest questions of nature, society, and existence. Whether it's the quantum behavior of electrons or the dynamics of social networks, we seek to understand the underlying fabric.
+          </p>
+          <p className="text-xl text-gray-300">
+            From that foundational understanding, we evolve <span className="text-cyan-400 font-semibold">X‑systems</span> – systems that were previously unknown – across all domains of living.
+          </p>
+        </div>
+      </section>
+
       {/* Research Divisions Preview */}
       <section className="py-20 px-4 bg-black/80">
         <div className="container mx-auto">
@@ -132,7 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ✅ X‑Systems Philosophy Section */}
+      {/* X‑Systems Philosophy Section */}
       <section className="py-20 px-4 bg-gray-900/30">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">The “X” Means Unknown</h2>
@@ -156,25 +169,4 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="bg-black/50 p-8 rounded-lg border border-cyan-500/20 hover:border-cyan-500 transition text-center"
-              >
-                <div className="text-5xl mb-4">{sol.icon}</div>
-                <h3 className="text-2xl font-bold mb-2">{sol.name}</h3>
-                <p className="text-cyan-400 italic mb-4">{sol.tagline}</p>
-                <Button variant="outline" size="sm" href={sol.link}>Explore →</Button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to shape the future?</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join us in building the
+                className="bg-black/50 p-8 rounded-lg border border-cyan-500/
