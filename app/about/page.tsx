@@ -14,14 +14,14 @@ export default function AboutPage() {
           About FREX
         </h1>
 
-        {/* ✅ Updated Mission & Philosophy Section */}
+        {/* ✅ Updated Fundamental Research Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Mission & Philosophy</h2>
+          <h2 className="text-2xl font-bold mb-4">What Does "Fundamental Research" Mean?</h2>
           <p className="text-gray-300 leading-relaxed mb-4">
-            FREX (Fundamental Research & Evolutionary X‑Systems) is a research organization that investigates fundamental questions across all domains – from quantum physics to sociology – and evolves systems that were previously unknown. The “X” represents the limitless possibilities of discovery.
+            For FREX, fundamental research is the pursuit of knowledge at the deepest level – the foundational principles that govern a domain. We are not driven by immediate applications, but by curiosity and the desire to uncover how things work at their core. This could be the quantum nature of materials, the ethical underpinnings of intelligent systems, or the emergent properties of complex networks.
           </p>
           <p className="text-gray-300 leading-relaxed">
-            We believe that breakthroughs emerge when we combine deep fundamental research with an evolutionary approach: systems that adapt, improve, and sometimes surprise us. Whether it's a new material like graphene, a novel governance model, or a life‑saving medical device, our goal is to create the foundational layer for tomorrow.
+            By understanding these foundations, we create the conditions for truly novel systems to evolve – systems that were previously unimaginable. This is the essence of the "X" in FREX: the unknown, waiting to be discovered through deep inquiry.
           </p>
         </section>
 
