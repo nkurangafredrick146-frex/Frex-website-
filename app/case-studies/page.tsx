@@ -1,7 +1,48 @@
-import { allCaseStudies } from 'contentlayer/generated'
-import Button from '@/components/Button'
+import fs from 'fs/promises';
+import path from 'path';
+import Link from 'next/link';
+import Button from '@/components/Button';
+import { Metadata } from 'next';
 
-export default function CaseStudiesPage() {
+export const metadata: Metadata = {
+  title: 'Case Studies | FREX Solutions',
+  description: 'Real-world applications of FREX technologies.',
+};
+
+export default async function CaseStudiesPage() {
+  const publishedDir = path.join(process.cwd(), 'content/case-studies');
+  let published: {
+    slug: string;
+    title: string;
+    client: string;
+    industry: string;
+    summary: string;
+  }[] = [];
+
+  try {
+    const files = await fs.readdir(publishedDir);
+    published = await Promise.all(
+      files.filter(f => f.endsWith('.mdx')).map(async (f) => {
+        const content = await fs.readFile(path.join(publishedDir, f), 'utf8');
+        const titleMatch = content.match(/title:\s*"([^"]+)"/);
+        const clientMatch = content.match(/client:\s*"([^"]+)"/);
+        const industryMatch = content.match(/industry:\s*"([^"]+)"/);
+        const summaryMatch = content.match(/summary:\s*"([^"]+)"/);
+
+        return {
+          slug: f.replace('.mdx', ''),
+          title: titleMatch ? titleMatch[1] : 'Untitled',
+          client: clientMatch ? clientMatch[1] : '',
+          industry: industryMatch ? industryMatch[1] : '',
+          summary: summaryMatch ? summaryMatch[1] : '',
+        };
+      })
+    );
+  } catch (e) {
+    // gracefully handle missing folder
+    console.warn('No case studies found:', e);
+  }
+
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -12,7 +53,7 @@ export default function CaseStudiesPage() {
           See how FREX solutions drive real-world impact.
         </p>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {allCaseStudies.map((cs) => (
+          {published.map((cs) => (
             <div
               key={cs.slug}
               className="bg-gray-900/50 rounded-lg overflow-hidden border border-cyan-500/20"
@@ -35,5 +76,5 @@ export default function CaseStudiesPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
