@@ -1,8 +1,10 @@
-import fs from 'fs/promises';
+ import fs from 'fs/promises';
 import path from 'path';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import { Metadata } from 'next';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: 'Case Studies | FREX Solutions',
@@ -10,8 +12,17 @@ export const metadata: Metadata = {
 };
 
 export default async function CaseStudiesPage() {
+  // --- Supabase published case studies ---
+  const supabase = createServerComponentClient({ cookies });
+  const { data: supabasePublished } = await supabase
+    .from('case_studies')
+    .select('*')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+
+  // --- Local MDX published case studies ---
   const publishedDir = path.join(process.cwd(), 'content/case-studies');
-  let published: {
+  let localPublished: {
     slug: string;
     title: string;
     client: string;
@@ -21,7 +32,7 @@ export default async function CaseStudiesPage() {
 
   try {
     const files = await fs.readdir(publishedDir);
-    published = await Promise.all(
+    localPublished = await Promise.all(
       files.filter(f => f.endsWith('.mdx')).map(async (f) => {
         const content = await fs.readFile(path.join(publishedDir, f), 'utf8');
         const titleMatch = content.match(/title:\s*"([^"]+)"/);
@@ -39,9 +50,24 @@ export default async function CaseStudiesPage() {
       })
     );
   } catch (e) {
-    // gracefully handle missing folder
-    console.warn('No case studies found:', e);
+    console.warn('No local case studies found:', e);
   }
+
+  // --- Combine both sources ---
+  const allPublished = [
+    ...(supabasePublished || []).map(cs => ({
+      slug: cs.slug,
+      title: cs.title,
+      client: cs.client,
+      industry: cs.industry,
+      summary: cs.summary,
+      source: 'supabase',
+    })),
+    ...localPublished.map(cs => ({
+      ...cs,
+      source: 'local',
+    })),
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
@@ -53,13 +79,12 @@ export default async function CaseStudiesPage() {
           See how FREX solutions drive real-world impact.
         </p>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {published.map((cs) => (
+          {allPublished.map((cs) => (
             <div
               key={cs.slug}
               className="bg-gray-900/50 rounded-lg overflow-hidden border border-cyan-500/20"
             >
               <div className="h-48 bg-gray-800 relative">
-                {/* Placeholder for image – replace with Next/Image */}
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20" />
               </div>
               <div className="p-6">
@@ -70,6 +95,7 @@ export default async function CaseStudiesPage() {
                 <Button variant="outline" size="sm" href={`/case-studies/${cs.slug}`}>
                   Read Full Study
                 </Button>
+                <p className="text-xs text-gray-500 mt-2">Source: {cs.source}</p>
               </div>
             </div>
           ))}
@@ -77,4 +103,4 @@ export default async function CaseStudiesPage() {
       </div>
     </div>
   );
-}
+                }
