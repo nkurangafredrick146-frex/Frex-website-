@@ -82,7 +82,7 @@ export default async function CaseStudiesPage() {
           {allPublished.map((cs) => (
             <div
               key={cs.slug}
-              className="bg-gray-900/50 rounded-lg overflow-hidden border border-cyan-500/20"
+              className="bg-gray-900/50 rounded-lg overflow-hidden border border-cyan-500/20 hover:border-cyan-500 transition"
             >
               <div className="h-48 bg-gray-800 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20" />
@@ -103,4 +103,4 @@ export default async function CaseStudiesPage() {
       </div>
     </div>
   );
-                }
+}
