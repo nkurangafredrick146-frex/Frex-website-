@@ -25,7 +25,7 @@ const staticCases = [
   },
   {
     slug: 'frex-sos',
-    title: 'FREX SOS: Systems of Systems',
+    title: 'FREX SOS: Scientific operating Systems',
     client: 'FREX Internal',
     industry: 'Cross-Domain Research',
     summary: 'Our flagship modular discovery engine.',
