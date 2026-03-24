@@ -1,4 +1,4 @@
- import { Metadata } from 'next';
+import { Metadata } from 'next';
 import Button from '@/components/Button';
 
 export const metadata: Metadata = {
