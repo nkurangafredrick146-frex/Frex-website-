@@ -1,4 +1,4 @@
- import fs from 'fs/promises';
+import fs from 'fs/promises';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
